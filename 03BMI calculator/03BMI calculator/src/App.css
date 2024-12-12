@@ -1,0 +1,93 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #e0e5ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-card {
+  background: #e0e5ec;
+  border-radius: 20px;
+  box-shadow: 8px 8px 16px #b8b9be, -8px -8px 16px #ffffff;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.form-card h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #555;
+}
+
+.form-card form div {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+label {
+  font-size: 0.9rem;
+  color: #666;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background: #e0e5ec;
+  box-shadow: inset 8px 8px 16px #b8b9be, inset -8px -8px 16px #ffffff;
+  font-size: 1rem;
+  color: #333;
+}
+
+input:focus {
+  outline: none;
+  color: #000;
+}
+
+.btn button {
+  background: #e0e5ec;
+  color: #555;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 8px 8px 16px #b8b9be, -8px -8px 16px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.btn button:hover {
+  box-shadow: inset 8px 8px 16px #b8b9be, inset -8px -8px 16px #ffffff;
+}
+
+.result {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: #555;
+  background: #e0e5ec;
+  padding: 0.8rem;
+  border-radius: 10px;
+  box-shadow: inset 8px 8px 16px #b8b9be, inset -8px -8px 16px #ffffff;
+}
