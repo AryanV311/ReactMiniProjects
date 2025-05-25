@@ -1,0 +1,89 @@
+/* Navbar.css */
+
+.navbar {
+  width: 100%;
+  background: linear-gradient(to right, #f9d423, #ff4e50); /* Yellow to reddish gradient */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  border-radius: 25px;
+}
+
+.pages {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.pages a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.pages a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #333;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s ease;
+}
+
+.pages a:hover::after {
+  width: 100%;
+}
+
+.pages a.active li {
+  color: #000;
+  font-weight: 600;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: white;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.profile p {
+  font-weight: 500;
+  color: #333;
+}
+
+.profile .btn{
+    padding: 10px 16px;
+    border-radius: 25px;
+    border: 1px solid blue;
+    background-color: #0b1de9;
+    color: white;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+    cursor: pointer;
+}
