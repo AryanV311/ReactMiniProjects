@@ -2,7 +2,11 @@
 
 .navbar {
   width: 100%;
-  background: linear-gradient(to right, #f9d423, #ff4e50); /* Yellow to reddish gradient */
+  background: linear-gradient(
+    to right,
+    #f9d423,
+    #ff4e50
+  ); /* Yellow to reddish gradient */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -58,13 +62,26 @@
   font-weight: 600;
 }
 
-.profile {
+.profile-hover-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
 }
 
-.profile img {
+/* Dropdown appears only on hover */
+.profile-hover-wrapper:hover .p-card {
+  display: block;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.profile-section img {
   height: 35px;
   width: 35px;
   border-radius: 50%;
@@ -78,12 +95,74 @@
   color: #333;
 }
 
-.profile .btn{
-    padding: 10px 16px;
-    border-radius: 25px;
-    border: 1px solid blue;
-    background-color: #0b1de9;
-    color: white;
-    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
-    cursor: pointer;
+.profile .btn {
+  padding: 10px 16px;
+  border-radius: 25px;
+  border: 1px solid blue;
+  background-color: #0b1de9;
+  color: white;
+  box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+  cursor: pointer;
+}
+
+.profile-section {
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-section img:hover {
+  cursor: pointer;
+}
+
+.down:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.p-card {
+  position: absolute;
+  /* border: 1px solid; */
+  width: 220px;
+  top: 50px;
+  right: 0px;
+  height: 110px;
+  background: #f4f2f2;
+  border-radius: 4px;
+  display: none;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.p-menu {
+  border: 1px solid;
+  margin: 10px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.p-menu label {
+  display: flex;
+  gap: 10px;
+}
+
+.p-menu label p {
+  color: #4b5563;
+  font-size: 18px;
+}
+
+.p-menu label p:first-child {
+  font-size: 22px;
+}
+
+.p-menu label p:hover {
+  color: #000;
+  cursor: pointer;
+}
+
+.profile-section:hover .p-card {
+  display: block;
 }

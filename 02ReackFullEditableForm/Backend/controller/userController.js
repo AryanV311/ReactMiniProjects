@@ -41,7 +41,7 @@ export const registerUser = async (req, res) => {
     const user = await newUser.save();
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    res.json({ ...user._doc, token });
+    res.json({ ...user._doc, token,success:true });
   } catch (error) {
     res
       .status(500)
@@ -66,8 +66,8 @@ export const loginUser = async (req, res) => {
     }
 
     if (isMatch) {
-      const token = await jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-      return res.json({ ...user._doc, token });
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+      return res.json({ ...user._doc, token, success:true });
     }
   } catch (error) {
     console.log(error);
@@ -75,33 +75,52 @@ export const loginUser = async (req, res) => {
   }
 };
 
+export const getProfile = async(req,res) =>{
+    try {
+       const userId = req.user?.id; 
+        if (!userId) throw new Error("User ID not found from token");
+
+        const userData = await userModel.findById(userId).select('-password');
+        console.log("userData::::", userData);
+
+        res.json({ success: true, userData });
+    } catch (error) {
+        console.log(error);
+        res.json({success:false, message:error.message})
+    }
+}
+
 export const updateProfile = async (req, res) => {
   try {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
     const { email, name } = req.body;
 
     const updateData = {};
-
     if (name) updateData.name = name;
     if (email) updateData.email = email;
 
+    console.log("req.file", req.file)
+
+    
     if (req.file) {
       updateData.photo = `/uploads/${req.file.filename}`;
     }
 
-    const updatedUser = await userModel.findByIdAndUpdate(
-      req.user._id,
-      userData,
-      { new: true }
-    );
-    if (!updatedUser) {
-      return res.status(404).json({ message: "User not found" });
-    }
+    await userModel.findByIdAndUpdate(userId, updateData, { new: true }).select('-password');
 
-    const token = req.headers.authorization?.split(" ")[1];
+    console.log(updateData);
 
-    res.json({ ...updatedUser._doc, token });
+    res.json({ success: true, message: "Profile updated" });
   } catch (error) {
     console.error("Profile update error:", error.message);
     res.status(500).json({ message: 'Profile update failed', error: error.message });
   }
 };
+
+
+
